@@ -17,7 +17,7 @@ const MapView = () => {
         container: mapDiv.current!,
         style: "mapbox://styles/mapbox/streets-v11",
         center: userLocation,
-        zoom: 13
+        zoom: 7
       })
       map.addControl( new mapboxgl.NavigationControl() )
       setMap( map )
