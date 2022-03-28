@@ -5,19 +5,25 @@ import { MapContext } from '../context/map/MapContext';
 
 const SearchResults = () => {
 
-  const { places } = useContext(PlacesContext)
-  const { map } = useContext(MapContext)
+  const { places, userLocation } = useContext(PlacesContext)
+  const { map,getRouteBetweenPoints } = useContext(MapContext)
   const [activePlace, setActivePlace] = useState('')
 
   const onPlaceClick = (place: Feature) => {
     setActivePlace(place.id)
     const [lng, lat] = place.center;
     map?.flyTo({
-      zoom: 14,
+      zoom: 10,
       duration: 500,
       animate: true,
       center: [lng, lat],
     })
+  }
+
+  const getRoute = ( place: Feature ) => {
+    if( !userLocation ) return;
+    const [lng, lat] = place.center;
+    getRouteBetweenPoints( userLocation, [lng, lat] )
   }
 
   if ( !places.length ) {
@@ -39,6 +45,7 @@ const SearchResults = () => {
             </p>
             <button 
               className="btn btn-secondary btn-sm"
+              onClick={() => getRoute(item)}
             >
               Direciones
             </button>
