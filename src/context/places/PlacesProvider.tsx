@@ -49,6 +49,7 @@ export const PlacesProvider = ( {children}: {children: JSX.Element | JSX.Element
     <PlacesContext.Provider 
       value={{
         ...state,
+        places: state.places,
         searchPlaces
       }}
     >
