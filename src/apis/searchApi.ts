@@ -5,6 +5,6 @@ export const searchApi = axios.create({
   params: {
     limit: 7,
     language: 'es',
-    access_token: 'pk.eyJ1IjoiY3VhZHJvcyIsImEiOiJjbDE3YXVta3oxYXB5M2V2MHdrdmU4YXA2In0.RNlufKFlqgMk4uK0t4M5Gw'
+    access_token: 'YOUR_MAPBOX_ACCESS_TOKEN'
   }
 });
