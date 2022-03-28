@@ -1,8 +1,10 @@
+import { Feature } from "../../interfaces/searchResponse.interface"
 import { PlacesProviderProps } from "./PlacesProvider"
 
 type PlacesAction = 
 { type: 'setUserLocation', payload: [number, number] } |
-{ type: 'setIsLoading', payload: boolean }
+{ type: 'setIsLoading', payload: boolean } |
+{ type: 'setPlaces', payload: Feature[] }
 
 export const placesReducer = ( state: PlacesProviderProps,  action: PlacesAction ): PlacesProviderProps => {
 
@@ -17,6 +19,12 @@ export const placesReducer = ( state: PlacesProviderProps,  action: PlacesAction
       return {
         ...state,
         isLoading: action.payload
+      }
+    case 'setPlaces':
+      return {
+        ...state,
+        isLoading: false,
+        places: action.payload
       }
     default:
       return state
